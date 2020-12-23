@@ -7,6 +7,7 @@ import com.john.springredditclone.models.VerificationToken;
 import com.john.springredditclone.repositories.UserRepository;
 import com.john.springredditclone.repositories.VerificationTokenRepository;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ import java.time.Instant;
 import java.util.UUID;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class AuthService implements IAuthService {
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
@@ -23,10 +24,10 @@ public class AuthService implements IAuthService {
     private final MailService mailService;
 
     @Value("${application.host}")
-    private final String host;
+    private String host;
 
-    @Value("${application.port}")
-    private final String port;
+    @Value("${server.port}")
+    private String port;
 
     @Transactional
     public void signUp(RegisterRequest registerRequest) {
