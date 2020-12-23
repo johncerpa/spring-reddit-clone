@@ -9,6 +9,7 @@ import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,6 +23,7 @@ public class MailService {
     @Value("${email.sender}")
     private String mailer;
 
+    @Async
     public void sendMail(NotificationEmail notificationEmail) {
         MimeMessagePreparator messagePreparator = mimeMessage -> {
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
@@ -38,7 +40,7 @@ public class MailService {
             log.info("Activation email sent");
         } catch (MailException e) {
             log.debug(e.getMessage());
-            throw new SpringRedditException("Exception occurred when sending email");
+            throw new SpringRedditException("Exception occurred when sending email", e);
         }
     }
 
