@@ -3,26 +3,33 @@ package com.john.springredditclone.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.time.Instant;
 
 import static javax.persistence.FetchType.LAZY;
 import static javax.persistence.GenerationType.IDENTITY;
 
-@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "token")
-public class VerificationToken {
+@Entity
+public class Comment {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
 
-    private String token;
+    @NotEmpty
+    private String text;
 
-    @OneToOne(fetch = LAZY)
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "postId", referencedColumnName = "postId")
+    private Post post;
+
+    private Instant createdDate;
+
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "userId", referencedColumnName = "userId")
     private User user;
-
-    private Instant expiryDate;
 }
