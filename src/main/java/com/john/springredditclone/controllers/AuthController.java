@@ -49,7 +49,7 @@ public class AuthController {
     @PostMapping("/logout")
     public ResponseEntity<String> logout(@Valid @RequestBody RefreshTokenRequest refreshTokenRequest) {
         refreshTokenService.deleteRefreshToken(refreshTokenRequest.getRefreshToken());
-        return ResponseEntity.status(OK).body("Refresh token deleted succesfully");
+        return ResponseEntity.status(OK).body("Refresh token deleted successfully");
     }
 
 }
