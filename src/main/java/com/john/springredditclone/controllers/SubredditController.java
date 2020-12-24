@@ -14,7 +14,7 @@ import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
 
 @RestController
-@RequestMapping("/api/subreddit")
+@RequestMapping("/api/subreddits")
 @RequiredArgsConstructor
 @Slf4j
 public class SubredditController {
