@@ -11,4 +11,6 @@ public interface ICommentService {
     List<CommentDto> getAllCommentsForPost(Long postId);
 
     void sendCommentNotification(String message, User user);
+
+    List<CommentDto> getAllCommentsForUser(String username);
 }

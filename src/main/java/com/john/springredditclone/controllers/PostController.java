@@ -2,6 +2,7 @@ package com.john.springredditclone.controllers;
 
 import com.john.springredditclone.dto.PostRequest;
 import com.john.springredditclone.dto.PostResponse;
+import com.john.springredditclone.services.IPostService;
 import com.john.springredditclone.services.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ import static org.springframework.http.HttpStatus.OK;
 @RequiredArgsConstructor
 public class PostController {
 
-    private final PostService postService;
+    private final IPostService postService;
 
     @PostMapping
     public ResponseEntity createPost(@RequestBody PostRequest postRequest) {

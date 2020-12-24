@@ -1,10 +1,9 @@
 package com.john.springredditclone.controllers;
 
 import com.john.springredditclone.dto.SubredditDto;
-import com.john.springredditclone.services.SubredditService;
+import com.john.springredditclone.services.ISubredditService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +17,7 @@ import static org.springframework.http.HttpStatus.OK;
 @RequiredArgsConstructor
 @Slf4j
 public class SubredditController {
-    private final SubredditService subredditService;
+    private final ISubredditService subredditService;
 
     @PostMapping
     public ResponseEntity<SubredditDto> createSubreddit(@RequestBody SubredditDto subredditDto) {

@@ -28,7 +28,7 @@ public class CommentService implements ICommentService {
 
     private final MailContentBuilder mailContentBuilder;
     private final MailService mailService;
-    private static final String POST_URL = "";
+    private static final String POST_URL = "ui/posts/postId";
 
     public void save(CommentDto commentDto) {
         Post post = postRepository.findById(commentDto.getPostId())
